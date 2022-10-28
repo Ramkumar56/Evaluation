@@ -8,12 +8,17 @@ public class second {
         for(int i=0;i< n;i++){
             arr[i]=scanner.nextInt();
         }
-        int j=0;
-        for(int i=1;i<arr.length;i++) {
-            if(arr[j]<arr[i] ||i== arr.length-1){
-                System.out.print(arr[i]+" ");
+        List<Integer>ans=new ArrayList<>();
+        ans.add(arr[n-1]);
+        int rightMax=arr[n-1];
+        int j=arr.length-1;
+        for(int i=arr.length-1;i>0;i--) {
+            if(arr[i]>arr[j] && rightMax<arr[i]){
+                ans.add(arr[i]);
             }
-            j=i;
+            rightMax=Math.max(arr[i],rightMax);
         }
+        Collections.reverse(ans);
+        System.out.println(ans);
     }
 }
